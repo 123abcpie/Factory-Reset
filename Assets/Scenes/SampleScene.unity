@@ -360,8 +360,8 @@ GameObject:
   - component: {fileID: 343689652}
   - component: {fileID: 343689651}
   - component: {fileID: 343689650}
-  - component: {fileID: 343689649}
   - component: {fileID: 343689654}
+  - component: {fileID: 343689655}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -369,23 +369,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &343689649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 343689648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8dc1b479d31fdc43a66219030a339b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 780443951}
-  projectilePrefab: {fileID: 864101887}
-  rangedDistance: 10
-  fireRate: 1
-  projectileSpeed: 10
 --- !u!65 &343689650
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -499,6 +482,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &343689655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343689648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6a6a0e5d91efd46804ec092c5b25ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 780443951}
+  projectilePrefab: {fileID: 864101887}
 --- !u!1 &412097036
 GameObject:
   m_ObjectHideFlags: 0

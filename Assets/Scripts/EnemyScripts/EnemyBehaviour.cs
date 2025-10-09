@@ -155,42 +155,14 @@ public class EnemyBehaviour : MonoBehaviour
         }
         else
         {
-            trackPlayer();
+            TrackPlayer();
         }
     }
     public void Melee()
     {
         if (cooldown > attackRate / 2 - 0.05f && cooldown < attackRate / 2 + 0.05f)
         {
-            Vector3 currentRotation = transform.eulerAngles;
-            for (float i = 0; i < 24; i++)
-            {
-                Vector3 newRotation = new Vector3(currentRotation.x, currentRotation.y + 15 * i, currentRotation.z);
-
-                //instantiate a projectile object and send it the player's way
-                GameObject projectile = UnityEngine.Object.Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-                GameObject burst = UnityEngine.Object.Instantiate(burstPrefab, transform.position, Quaternion.identity);
-                ProjectileScript projectileScript = projectile.GetComponent<ProjectileScript>();
-                if (projectileScript != null)
-                {
-                    projectileScript.lifetime = 0.2f;
-                }
-                //push forward the projectile
-                Rigidbody rb = projectile.GetComponent<Rigidbody>();
-                if (rb != null)
-                {
-                    projectile.transform.eulerAngles = newRotation;
-                    rb.AddForce(projectile.transform.forward * projectileSpeed, ForceMode.Impulse);
-                }
-                Rigidbody brb = burst.GetComponent<Rigidbody>();
-                if (brb != null)
-                {
-                    burst.transform.eulerAngles = newRotation;
-                    brb.AddForce(projectile.transform.forward * projectileSpeed / 2, ForceMode.Impulse);
-                }
-            }
-            cooldown -= Time.deltaTime;
-
+            Burst();
         }
         else if (cooldown <= attackRate / 2 && cooldown > 0)
         {
@@ -202,16 +174,46 @@ public class EnemyBehaviour : MonoBehaviour
         }
         else
         {
-            trackPlayer();
+            TrackPlayer();
         }
     }
-    public void trackPlayer()
+    public void TrackPlayer()
     {
         //this part tracks the player movement while in this state
-            cooldown -= Time.deltaTime;
-            Vector3 directionToPlayer = player.position - transform.position;
-            targetRotation = Quaternion.LookRotation(directionToPlayer);
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed);
+        cooldown -= Time.deltaTime;
+        Vector3 directionToPlayer = player.position - transform.position;
+        targetRotation = Quaternion.LookRotation(directionToPlayer);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed);
+    }
+    public void Burst()
+    {
+        Vector3 currentRotation = transform.eulerAngles;
+        for (float i = 0; i < 24; i++)
+        {
+            Vector3 newRotation = new Vector3(currentRotation.x, currentRotation.y + 15 * i, currentRotation.z);
+            //instantiate a projectile object and send it the player's way
+            GameObject projectile = UnityEngine.Object.Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+            GameObject burst = UnityEngine.Object.Instantiate(burstPrefab, transform.position, Quaternion.identity);
+            ProjectileScript projectileScript = projectile.GetComponent<ProjectileScript>();
+            if (projectileScript != null)
+            {
+                projectileScript.lifetime = 0.2f;
+            }
+            //push forward the projectile
+            Rigidbody rb = projectile.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                projectile.transform.eulerAngles = newRotation;
+                rb.AddForce(projectile.transform.forward * projectileSpeed, ForceMode.Impulse);
+            }
+            Rigidbody brb = burst.GetComponent<Rigidbody>();
+            if (brb != null)
+            {
+                burst.transform.eulerAngles = newRotation;
+                brb.AddForce(projectile.transform.forward * projectileSpeed / 2, ForceMode.Impulse);
+            }
+        }
+        cooldown = attackRate / 2 - 0.05f; 
     }
 }
 

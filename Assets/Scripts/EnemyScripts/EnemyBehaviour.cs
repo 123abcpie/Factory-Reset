@@ -12,10 +12,12 @@ public class EnemyBehaviour : MonoBehaviour
         Ranged,
         Idle
     }
-    public EnemyState currentState = EnemyState.Patrol;
+    public EnemyState currentState = EnemyState.Idle;
     public float targetDistance = 10f;
     public float meleeDistance = 2f;
     public Transform player;
+    public float fireRate = 1f;
+    public float projectileSpeed = 10f;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +31,7 @@ public class EnemyBehaviour : MonoBehaviour
         switch (currentState)
         {
             case EnemyState.Idle:
-                // Implement Idle behavior here
+                // The case switch for the Idle State
                 if (Vector3.Distance(transform.position, player.position) < meleeDistance)
                 {
                     currentState = EnemyState.Melee;
@@ -40,22 +42,26 @@ public class EnemyBehaviour : MonoBehaviour
                 }
                 else
                 {
-                    Idle;
+                    Idle();
                 }
                 break;
             case EnemyState.Ranged:
-                // Implement Ranged behavior here
+                // The case switch for the Ranged State
                 if (Vector3.Distance(transform.position, player.position) > targetDistance)
                 {
                     currentState = EnemyState.Idle;
                 }
-                if (Vector3.Distance(transform.position, player.position) < meleeDistance)
+                else if (Vector3.Distance(transform.position, player.position) < meleeDistance)
                 {
                     currentState = EnemyState.Melee;
                 }
+                else
+                {
+                    Ranged();
+                }
                 break;
             case EnemyState.Melee:
-                // Implement Melee behavior here
+                // The case switch for the Melee State
                 if (Vector3.Distance(transform.position, player.position) > targetDistance)
                 {
                     currentState = EnemyState.Idle;
@@ -63,6 +69,10 @@ public class EnemyBehaviour : MonoBehaviour
                 if (Vector3.Distance(transform.position, player.position) > meleeDistance)
                 {
                     currentState = EnemyState.Ranged;
+                }
+                else
+                {
+                    Melee();
                 }
                 break;
         }

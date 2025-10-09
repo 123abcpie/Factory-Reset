@@ -21,7 +21,8 @@ public class PlayerObject : MonoBehaviour
         cooldown -= Time.deltaTime;
         if (health < 1)
         {
-            Destroy(gameObject);
+            PlayerMovement playerMovement = gameObject.GetComponent<PlayerMovement>();
+            playerMovement.gameOn = false;
         }
     }
 

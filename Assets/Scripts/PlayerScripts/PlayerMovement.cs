@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb; 
     private float moveX;
     private float moveY;
+    public bool gameOn = true;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gameOn)
+        {
         // Get input from horizontal (A/D or Left/Right) and vertical (W/S or Up/Down)
         moveX = Input.GetAxis("Horizontal");
         moveY = Input.GetAxis("Vertical");
@@ -26,5 +29,6 @@ public class PlayerMovement : MonoBehaviour
 
         // Move the character
         rb.AddForce(movement * moveSpeed);
+        }
     }
 }

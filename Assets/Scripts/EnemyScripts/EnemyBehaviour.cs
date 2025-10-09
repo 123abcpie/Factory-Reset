@@ -13,14 +13,15 @@ public class EnemyBehaviour : MonoBehaviour
     }
     public EnemyState currentState = EnemyState.Idle;
     public GameObject projectilePrefab;
+    public GameObject burstPrefab;
     public float targetDistance = 10f;
     public float meleeDistance = 2f;
     public Transform player;
     public float rotationSpeed = 0.1f;
-    public float attackRate = 1f;
+    public float attackRate = 2f;
     public float projectileSpeed = 10f;
     private Quaternion targetRotation;
-    private float cooldown = 0f;
+    public float cooldown = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -93,7 +94,7 @@ public class EnemyBehaviour : MonoBehaviour
                 break;
         }
     }
-    
+
     public void Idle()
     {
         //smoothly point in the direction of the selected random angle.
@@ -112,27 +113,104 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
     public void Ranged()
-    {   
-        //this part tracks the player movement while in this state
-        cooldown -= Time.deltaTime;
-        Vector3 directionToPlayer = player.position - transform.position;
-        targetRotation = Quaternion.LookRotation(directionToPlayer);
-        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed);
-        if (cooldown <= 0)
+    {
+        if (cooldown > attackRate / 2 - 0.05f && cooldown < attackRate / 2 + 0.05f)
         {
-            //instantiate a projectile object and send it the player's way
-            GameObject projectile = UnityEngine.Object.Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-            Rigidbody rb = projectile.GetComponent<Rigidbody>();
-            if (rb != null)
+            // Only shoots if aiming at the player
+            float angleToPlayer = Vector3.Angle(transform.forward, player.position - transform.position);
+            if (angleToPlayer <= 10f)
             {
-                projectile.transform.rotation = transform.rotation;
-                rb.AddForce(transform.forward * projectileSpeed, ForceMode.Impulse);
+
+                //instantiate a projectile object and send it the player's way
+                GameObject projectile = UnityEngine.Object.Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+                GameObject burst = UnityEngine.Object.Instantiate(burstPrefab, transform.position, Quaternion.identity);
+                //push forward the projectile
+                Rigidbody rb = projectile.GetComponent<Rigidbody>();
+                if (rb != null)
+                {
+                    projectile.transform.rotation = transform.rotation;
+                    rb.AddForce(transform.forward * projectileSpeed, ForceMode.Impulse);
+                }
+                Rigidbody brb = burst.GetComponent<Rigidbody>();
+                if (brb != null)
+                {
+                    burst.transform.rotation = transform.rotation;
+                    brb.AddForce(transform.forward * projectileSpeed / 2, ForceMode.Impulse);
+                }
+                cooldown = attackRate / 2 - 0.05f;
             }
+            else
+            {
+                cooldown = attackRate / 2 + 0.06f;
+            }
+        }
+        else if (cooldown <= attackRate / 2 && cooldown > 0)
+        {
+            cooldown -= Time.deltaTime;
+        }
+        else if (cooldown <= 0f)
+        {
             cooldown = attackRate;
+        }
+        else
+        {
+            trackPlayer();
         }
     }
     public void Melee()
     {
-        cooldown -= Time.deltaTime;
+        if (cooldown > attackRate / 2 - 0.05f && cooldown < attackRate / 2 + 0.05f)
+        {
+            Vector3 currentRotation = transform.eulerAngles;
+            for (float i = 0; i < 24; i++)
+            {
+                Vector3 newRotation = new Vector3(currentRotation.x, currentRotation.y + 15 * i, currentRotation.z);
+
+                //instantiate a projectile object and send it the player's way
+                GameObject projectile = UnityEngine.Object.Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+                GameObject burst = UnityEngine.Object.Instantiate(burstPrefab, transform.position, Quaternion.identity);
+                ProjectileScript projectileScript = projectile.GetComponent<ProjectileScript>();
+                if (projectileScript != null)
+                {
+                    projectileScript.lifetime = 0.2f;
+                }
+                //push forward the projectile
+                Rigidbody rb = projectile.GetComponent<Rigidbody>();
+                if (rb != null)
+                {
+                    projectile.transform.eulerAngles = newRotation;
+                    rb.AddForce(projectile.transform.forward * projectileSpeed, ForceMode.Impulse);
+                }
+                Rigidbody brb = burst.GetComponent<Rigidbody>();
+                if (brb != null)
+                {
+                    burst.transform.eulerAngles = newRotation;
+                    brb.AddForce(projectile.transform.forward * projectileSpeed / 2, ForceMode.Impulse);
+                }
+            }
+            cooldown -= Time.deltaTime;
+
+        }
+        else if (cooldown <= attackRate / 2 && cooldown > 0)
+        {
+            cooldown -= Time.deltaTime;
+        }
+        else if (cooldown <= 0f)
+        {
+            cooldown = attackRate;
+        }
+        else
+        {
+            trackPlayer();
+        }
+    }
+    public void trackPlayer()
+    {
+        //this part tracks the player movement while in this state
+            cooldown -= Time.deltaTime;
+            Vector3 directionToPlayer = player.position - transform.position;
+            targetRotation = Quaternion.LookRotation(directionToPlayer);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed);
     }
 }
+

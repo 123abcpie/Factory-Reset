@@ -258,9 +258,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 2
   projectilePrefab: {fileID: 7460160663478210842, guid: 6d5d2babaa006c649ae3543623e5cefd, type: 3}
-  targetDistance: 8
-  meleeDistance: 0
+  burstPrefab: {fileID: 7489341712767360103, guid: c2af6283922266b429aaffdaa43f9954, type: 3}
+  targetDistance: 10
+  meleeDistance: 3
   player: {fileID: 0}
   rotationSpeed: 0.05
   attackRate: 1
   projectileSpeed: 10
+  cooldown: 0

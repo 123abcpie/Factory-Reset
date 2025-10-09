@@ -357,6 +357,7 @@
 "Assets/Scripts/EnemyScripts/EnemyRangedAttack.cs"
 "Assets/Scripts/EnemyScripts/EnemyState.cs"
 "Assets/Scripts/EnemyScripts/EnemyStateManager.cs"
+"Assets/Scripts/EnemyScripts/ProjectileScript.cs"
 "Assets/Scripts/GameUiHandler.cs"
 "Assets/Scripts/PlayerScripts/CameraController.cs"
 "Assets/Scripts/PlayerScripts/PlayerMovement.cs"

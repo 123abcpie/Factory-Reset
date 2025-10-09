@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1324107796166966752}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.53, z: 0.46}
+  m_LocalPosition: {x: 0, y: 0.304, z: 0.46}
   m_LocalScale: {x: 0.4, y: 0.5, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -137,7 +137,7 @@ Transform:
   m_GameObject: {fileID: 5581347714354989557}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.481, z: -3.44}
+  m_LocalPosition: {x: 0, y: 0.481, z: -9.93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -227,7 +227,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.02
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -257,8 +257,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 2
+  projectilePrefab: {fileID: 7460160663478210842, guid: 6d5d2babaa006c649ae3543623e5cefd, type: 3}
   targetDistance: 10
-  meleeDistance: 2
+  meleeDistance: 0
   player: {fileID: 0}
-  fireRate: 3
+  rotationSpeed: 0.05
+  attackRate: 1
   projectileSpeed: 10

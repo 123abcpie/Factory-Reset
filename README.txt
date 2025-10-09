@@ -84,3 +84,18 @@ Smoothing lag effects
 	Week 11 - Nov 23 to 29
 Final touches
 			Assignment 4: Game with Networking Component due Nov 27
+
+
+
+## FSM Breakdown
+Idle: rotates around "looking" for the player visually, but otherwise inactive.
+-> transitions to Ranged if the player is between 2 and 10 units of the enemy.
+-> transitions to Melee if the player is within 2 units of the enemy.
+
+Ranged: Follows the players movement and when aiming within 10 degrees of the player fires off a projectile towards the player
+-> transitions to Idle if the player is greater than 10 units away from the enemy.
+-> transitions to Melee if the player is within 2 units of the enemy.
+
+Melee: Periodically lets off small bursts of projectiles in a 360 degree ring.
+-> transitions to Idle if the player is greater than 10 units away from the enemy.
+-> transitions to Ranged if the player is between 2 and 10 units of the enemy.

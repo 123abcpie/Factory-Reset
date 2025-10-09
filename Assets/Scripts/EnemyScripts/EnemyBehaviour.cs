@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class EnemyBehaviour : MonoBehaviour
 {
     // Basic Enum
@@ -16,13 +15,15 @@ public class EnemyBehaviour : MonoBehaviour
     public float targetDistance = 10f;
     public float meleeDistance = 2f;
     public Transform player;
+    public float rotationSpeed = 0.1f;
     public float fireRate = 1f;
     public float projectileSpeed = 10f;
+    public Quaternion targetRotation;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        targetRotation = transform.localRotation;
     }
 
     // Update is called once per frame
@@ -80,7 +81,18 @@ public class EnemyBehaviour : MonoBehaviour
     
     public void Idle()
     {
-        
+        if (Quaternion.Angle(transform.rotation, targetRotation) > 0.1f)
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed);
+        }
+        else
+        {
+            if (UnityEngine.Random.Range(0, 50) < 1)
+            {
+                float randomYAngle = UnityEngine.Random.Range(0f, 360f);
+                targetRotation = Quaternion.Euler(0f, randomYAngle, 0f);
+            }
+        }
     }
     public void Ranged()
     {

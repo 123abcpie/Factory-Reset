@@ -135,6 +135,7 @@ public class EnemyBehaviour : MonoBehaviour
                 if (brb != null)
                 {
                     burst.transform.rotation = transform.rotation;
+                    brb.useGravity = true;
                     brb.AddForce(transform.forward * projectileSpeed / 2, ForceMode.Impulse);
                 }
                 cooldown = attackRate / 2 - 0.05f;

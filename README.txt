@@ -99,3 +99,5 @@ Ranged: Follows the players movement and when aiming within 10 degrees of the pl
 Melee: Periodically lets off small bursts of projectiles in a 360 degree ring.
 -> transitions to Idle if the player is greater than 10 units away from the enemy.
 -> transitions to Ranged if the player is between 2 and 10 units of the enemy.
+
+A2 Gameplay link: https://youtu.be/3zHH5QVrUq0

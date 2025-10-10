@@ -16,4 +16,12 @@ public class ProjectileScript : MonoBehaviour
     {
         
     }
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.gameObject.tag == "Terrain")
+        {
+            Destroy(gameObject);
+        }
+    }
 }

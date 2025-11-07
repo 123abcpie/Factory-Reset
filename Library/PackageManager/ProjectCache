@@ -13,14 +13,14 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638980537289637848
-    m_Hash: 1274371996
+      ticks: 638981537939887604
+    m_Hash: 2929865183
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
   m_LocalFileStatus: []
 m_ProjectPath: C:/Users/nunne/Documents/GitHub/Factory-Reset/Factory-Reset/Packages
-m_EditorVersion: 2022.3.30f1 (70558241b701)
+m_EditorVersion: 2022.3.42f1 (2dcb6a0abc42)
 m_ResolvedPackages:
 - packageId: com.unity.ai.navigation@1.1.7
   testable: 0
@@ -229,8 +229,6 @@ m_ResolvedPackages:
     - 2.10.0
     - 2.10.1
     compatible:
-    - 2.3.1
-    - 2.4.3
     - 2.4.4
     - 2.5.1
     - 2.5.2
@@ -243,7 +241,7 @@ m_ResolvedPackages:
     - 2.9.3
     - 2.10.0
     - 2.10.1
-    recommended: 2.3.1
+    recommended: 2.4.4
     deprecated: []
   dependencies: []
   resolvedDependencies: []
@@ -282,7 +280,7 @@ m_ResolvedPackages:
     revision: d05e170be4282c71223767f286e93871356512a1
     path: 
   unityLifecycle:
-    version: 2.3.1
+    version: 2.4.4
     nextVersion: 
     recommendedVersion: 
     isDeprecated: 0
@@ -345,7 +343,7 @@ m_ResolvedPackages:
   - name: com.unity.modules.jsonserialize
     version: 1.0.0
   - name: com.unity.ide.rider
-    version: 3.0.28
+    version: 3.0.31
   - name: com.unity.ide.vscode
     version: 1.2.5
   - name: com.unity.editorcoroutines
@@ -353,7 +351,7 @@ m_ResolvedPackages:
   - name: com.unity.performance.profile-analyzer
     version: 1.2.2
   - name: com.unity.testtools.codecoverage
-    version: 1.2.5
+    version: 1.2.6
   - name: com.unity.settings-manager
     version: 2.0.1
   keywords: []
@@ -2976,12 +2974,12 @@ m_ResolvedPackages:
   isDeprecated: 0
   deprecationMessage: 
   fingerprint: 
-- packageId: com.unity.ide.rider@3.0.28
+- packageId: com.unity.ide.rider@3.0.31
   testable: 0
   isDirectDependency: 0
-  version: 3.0.28
+  version: 3.0.31
   source: 1
-  resolvedPath: C:\Users\nunne\Documents\GitHub\Factory-Reset\Factory-Reset\Library\PackageCache\com.unity.ide.rider@3.0.28
+  resolvedPath: C:\Users\nunne\Documents\GitHub\Factory-Reset\Factory-Reset\Library\PackageCache\com.unity.ide.rider@3.0.31
   assetPath: Packages/com.unity.ide.rider
   name: com.unity.ide.rider
   displayName: JetBrains Rider Editor
@@ -3047,7 +3045,6 @@ m_ResolvedPackages:
     - 3.0.37
     - 3.0.38
     compatible:
-    - 3.0.28
     - 3.0.31
     - 3.0.34
     - 3.0.35
@@ -3074,16 +3071,16 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 638447139880000000
+  datePublishedTicks: 638548308080000000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.ide.rider@3.0/manual/index.html
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.rider.git
-    revision: f4880c72477e9bbd7321c0dbda4428fa10d916df
+    revision: ccd778a2275ff09f1a83bc924cfb2fb4d5b63566
     path: 
   unityLifecycle:
-    version: 3.0.28
+    version: 3.0.31
     nextVersion: 
     recommendedVersion: 
     isDeprecated: 0
@@ -3446,12 +3443,12 @@ m_ResolvedPackages:
   isDeprecated: 0
   deprecationMessage: 
   fingerprint: 
-- packageId: com.unity.testtools.codecoverage@1.2.5
+- packageId: com.unity.testtools.codecoverage@1.2.6
   testable: 0
   isDirectDependency: 0
-  version: 1.2.5
+  version: 1.2.6
   source: 1
-  resolvedPath: C:\Users\nunne\Documents\GitHub\Factory-Reset\Factory-Reset\Library\PackageCache\com.unity.testtools.codecoverage@1.2.5
+  resolvedPath: C:\Users\nunne\Documents\GitHub\Factory-Reset\Factory-Reset\Library\PackageCache\com.unity.testtools.codecoverage@1.2.6
   assetPath: Packages/com.unity.testtools.codecoverage
   name: com.unity.testtools.codecoverage
   displayName: Code Coverage
@@ -3503,7 +3500,6 @@ m_ResolvedPackages:
     - 1.2.6
     - 1.2.7
     compatible:
-    - 1.2.5
     - 1.2.6
     - 1.2.7
     recommended: 1.2.7
@@ -3539,16 +3535,16 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 638386640140000000
+  datePublishedTicks: 638575857900000000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.testtools.codecoverage@1.2/manual/index.html
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.testtools.codecoverage.git
-    revision: afeb9febf6597fcc31c99ca116d6a82b1e97b9f5
+    revision: 959db8ff97eedf9b211ad5cf320b87ac01f1e90f
     path: 
   unityLifecycle:
-    version: 1.2.5
+    version: 1.2.6
     nextVersion: 
     recommendedVersion: 
     isDeprecated: 0
@@ -3695,4 +3691,4 @@ m_ResolvedPackages:
   isDeprecated: 0
   deprecationMessage: 
   fingerprint: 
-m_BuiltInPackagesHash: 956a35e0dfec766c8a8a607d0057217f08b46959
+m_BuiltInPackagesHash: aee274f1cc3a449a7bcb0ab99baf64c1bcf18ae8

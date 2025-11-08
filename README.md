@@ -102,4 +102,17 @@ Melee: Periodically lets off small bursts of projectiles in a 360 degree ring.
 
 A2 Gameplay Link: https://youtu.be/3zHH5QVrUq0
 
+## FSM 2 Breakdown
+For assignment 3, we created a second enemy. It appears as a red cube in the gameplay video
+Patrol: Enemy moves between 2 predetermined points in the environment
+-> Transitions to Idle once the enemy has reached one of the predetermined points
+-> Transitions to Chase if the player is 10 units away from the enemy
+
+Idle: Enemy stops moving for a second once it reaches a waypoint during the Patrol state
+-> Transitions back to Patrol after waiting at the waypoint for 1 second
+-> Transitions to Chase if the player is 10 units away from the enemy
+
+Chase: Enemy seeks the player until it makes contact with the player, destroying the enemy and dealing 1 damage to the player
+-> Transitions to Patrol if the player is 10 units away during chase
+
 A3 Gameplay Link : https://youtu.be/Ej9loPDawRQ

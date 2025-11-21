@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveAcceleration = 20f;
+    public float moveAcceleration = 50f;
 
-    public float maxSpeed = 7f;
-    public float turnSpeed = 180f;
+    public float maxSpeed = 23f;
+    public float turnSpeed = 20f;
     private Rigidbody rb;
     public bool gameOn = true;
 
@@ -23,8 +23,8 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         if (rb != null)
         {
-            rb.drag = 5f;
-            rb.angularDrag = 5f;
+            rb.drag = 1.5f;
+            rb.angularDrag = 4f;
         }
     }
 
@@ -68,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
     private void Turn()
     {
         float turn = turnInputValue * turnSpeed;
-        rb.AddTorque(Vector3.up * turn, ForceMode.Acceleration);
+        rb.AddTorque(Vector3.up * turn , ForceMode.Acceleration);
 
         //float turn = turnInputValue * turnSpeed * Time.deltaTime;
         //Quaternion turnRotation = Quaternion.Euler (0f, turn, 0f);

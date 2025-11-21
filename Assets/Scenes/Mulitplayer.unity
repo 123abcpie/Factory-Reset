@@ -5674,15 +5674,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5432586167067213548, guid: 991c8e002b16c1a4abc2ce9e439bc6ae, type: 3}
       propertyPath: maxSpeed
-      value: 20
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5432586167067213548, guid: 991c8e002b16c1a4abc2ce9e439bc6ae, type: 3}
       propertyPath: turnSpeed
-      value: 90
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5432586167067213548, guid: 991c8e002b16c1a4abc2ce9e439bc6ae, type: 3}
       propertyPath: moveAcceleration
-      value: 100
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 9112935656011148556, guid: 991c8e002b16c1a4abc2ce9e439bc6ae, type: 3}
       propertyPath: m_Size.y

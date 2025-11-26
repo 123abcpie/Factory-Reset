@@ -399,6 +399,7 @@
 "Assets/Scripts/EnemyScripts/ProjectileScript.cs"
 "Assets/Scripts/EnemyScripts/TurretBehaviour.cs"
 "Assets/Scripts/GameUiHandler.cs"
+"Assets/Scripts/MainMenuController.cs"
 "Assets/Scripts/NetworkScripts/ClientNetworkTransform.cs"
 "Assets/Scripts/NetworkScripts/NetworkGUI.cs"
 "Assets/Scripts/PlayerScripts/CameraController.cs"

@@ -1,78 +1,60 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class PlayerMovement : MonoBehaviour
+[RequireComponent(typeof(Rigidbody))]
+public class PlayerMovement : NetworkBehaviour
 {
     public float moveAcceleration = 50f;
-
     public float maxSpeed = 23f;
     public float turnSpeed = 20f;
+
     private Rigidbody rb;
-    public bool gameOn = true;
-
-    private string movementAxisName;
-    private string turnAxisName;
-
     private float movementInputValue;
     private float turnInputValue;
 
-    // Start is called before the first frame update
-    void Start()
+    public bool gameOn = true;
+
+    private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            rb.drag = 1.5f;
-            rb.angularDrag = 4f;
-        }
+        rb.drag = 1.5f;
+        rb.angularDrag = 4f;
     }
 
-    // Update is called once per frame
-    // Store player's input
-    void Update()
+    private void Update()
     {
+        // Only the local player reads input
+        if (!IsOwner) return;
+
         if (gameOn)
         {
-            // Get input from horizontal (A/D or Left/Right) and vertical (W/S or Up/Down)
             movementInputValue = Input.GetAxis("Vertical");
             turnInputValue = Input.GetAxis("Horizontal");
         }
     }
 
-    // Move and turn player
     private void FixedUpdate()
     {
-        if (gameOn)
-        {
-            Move();
-            Turn();
-        }
+        if (!IsOwner) return; // Only move local player locally
+        if (!gameOn) return;
+
+        Move();
+        Turn();
     }
 
-    // Adjust position of player based on input
     private void Move()
     {
-        Vector3 desiredForce = transform.forward * movementInputValue * moveAcceleration;
-        rb.AddForce(desiredForce, ForceMode.Force);
+        Vector3 force = transform.forward * movementInputValue * moveAcceleration;
+        rb.AddForce(force, ForceMode.Force);
 
-        // Optional: Limit max speed
+        // Limit max speed
         if (rb.velocity.magnitude > maxSpeed)
             rb.velocity = rb.velocity.normalized * maxSpeed;
-
-        //Vector3 movement = transform.forward * movementInputValue * moveAcceleration * Time.deltaTime;
-        //rb.MovePosition(rb.position + movement);
     }
 
-    // Adjust rotation of player based on input
     private void Turn()
     {
-        float turn = turnInputValue * turnSpeed;
-        rb.AddTorque(Vector3.up * turn , ForceMode.Acceleration);
-
-        //float turn = turnInputValue * turnSpeed * Time.deltaTime;
-        //Quaternion turnRotation = Quaternion.Euler (0f, turn, 0f);
-        //rb.MoveRotation (rb.rotation * turnRotation);
-
+        float torque = turnInputValue * turnSpeed;
+        rb.AddTorque(Vector3.up * torque, ForceMode.Acceleration);
     }
 }

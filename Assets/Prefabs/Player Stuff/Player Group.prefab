@@ -115,9 +115,11 @@ GameObject:
   m_Component:
   - component: {fileID: 223772963862932392}
   - component: {fileID: 996394944888250137}
-  - component: {fileID: 4491245952823743335}
   - component: {fileID: 9112935656011148556}
-  - component: {fileID: 5432586167067213548}
+  - component: {fileID: 5618139434324167946}
+  - component: {fileID: 6756655846067941696}
+  - component: {fileID: 7223221432438318644}
+  - component: {fileID: 742849986852266429}
   m_Layer: 0
   m_Name: Player Group
   m_TagString: Player
@@ -167,22 +169,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 36
   m_CollisionDetection: 0
---- !u!114 &4491245952823743335
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3337971528646695485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dc767453b454d141b1751187760db44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 3
-  iFrames: 0.5
 --- !u!65 &9112935656011148556
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -204,7 +192,44 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.177062, y: 1.1232826, z: 1.0642362}
   m_Center: {x: 0.40168956, y: -0.91306955, z: 0.18800054}
---- !u!114 &5432586167067213548
+--- !u!114 &5618139434324167946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3337971528646695485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 2836360585
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 1
+--- !u!114 &6756655846067941696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3337971528646695485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dc767453b454d141b1751187760db44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
+  iFrames: 0.5
+--- !u!114 &7223221432438318644
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -216,10 +241,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 633d081abb2caa64fb69138c1d1c0164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveAcceleration: 80
-  maxSpeed: 50
+  moveAcceleration: 50
+  maxSpeed: 23
   turnSpeed: 20
   gameOn: 1
+--- !u!114 &742849986852266429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3337971528646695485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08738bab3bd2edf43a82d195a4c0c6ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UseUnreliableDeltas: 0
+  SyncPositionX: 1
+  SyncPositionY: 0
+  SyncPositionZ: 1
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 0
+  SyncScaleY: 0
+  SyncScaleZ: 0
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  UseQuaternionSynchronization: 0
+  UseQuaternionCompression: 0
+  UseHalfFloatPrecision: 0
+  InLocalSpace: 0
+  Interpolate: 1
+  SlerpPosition: 0
 --- !u!1 &7419137785756757205
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,11 +28,16 @@ public class PlayerObject : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.tag == "Bullet")
+        if (collider.gameObject.tag == "Bullet" || collider.gameObject.tag == "CollidableEnemy")
         {
             float speed = 10f;
             rb.AddForce(collider.gameObject.transform.forward * speed, ForceMode.Impulse);
-            Destroy(collider.gameObject);
+            if(collider.gameObject.tag == "Bullet"){
+                Destroy(collider.gameObject);
+            }
+            else if(collider.gameObject.tag == "CollidableEnemy"){
+            
+            }
             if(cooldown <= 0)
             {
                 health -= 1;

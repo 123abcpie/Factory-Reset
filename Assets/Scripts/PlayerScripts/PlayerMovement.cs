@@ -6,6 +6,7 @@ public class PlayerMovement : NetworkBehaviour
 {
     public float moveAcceleration = 50f;
     public float maxSpeed = 23f;
+    private float tempMaxSpeed = 23f;
     public float turnSpeed = 20f;
     private float boostCooldown = 1f;
     public float boostSpeed = 25f;
@@ -57,8 +58,8 @@ public class PlayerMovement : NetworkBehaviour
         rb.AddForce(force, ForceMode.Force);
 
         // Limit max speed
-        if (rb.velocity.magnitude > maxSpeed)
-            rb.velocity = rb.velocity.normalized * maxSpeed;
+        if (rb.velocity.magnitude > tempMaxSpeed)
+            rb.velocity = rb.velocity.normalized * tempMaxSpeed;
     }
 
     private void Turn()

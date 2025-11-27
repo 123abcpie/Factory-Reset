@@ -36,7 +36,7 @@ public class PlayerObject : MonoBehaviour
                 Destroy(collider.gameObject);
             }
             else if(collider.gameObject.tag == "CollidableEnemy"){
-            
+                rb.AddForce(collider.gameObject.transform.forward * speed, ForceMode.Impulse);
             }
             if(cooldown <= 0)
             {

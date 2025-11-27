@@ -6,12 +6,14 @@ public class SinglePlayerMovement : NetworkBehaviour
 {
     public float moveAcceleration = 50f;
     public float maxSpeed = 23f;
+    private float tempMaxSpeed = 23f;
     public float turnSpeed = 20f;
-
+    private float boostCooldown = 1f;
+    public float boostSpeed = 25f;
+    private bool boost = false;
     private Rigidbody rb;
     private float movementInputValue;
     private float turnInputValue;
-
     public bool gameOn = true;
     private Quaternion initialRotation;
 
@@ -29,6 +31,11 @@ public class SinglePlayerMovement : NetworkBehaviour
         {
             movementInputValue = Input.GetAxis("Vertical");
             turnInputValue = Input.GetAxis("Horizontal");
+            if (Input.GetKey(KeyCode.LeftShift) && boostCooldown <= 0)
+            {
+                boost = true;
+                boostCooldown = 0.5f;
+            }
         }
     }
 
@@ -38,6 +45,7 @@ public class SinglePlayerMovement : NetworkBehaviour
 
         Turn();
         Move();
+        Boost();
         
         Vector3 currentEuler = transform.rotation.eulerAngles;
         transform.rotation = Quaternion.Euler(initialRotation.eulerAngles.x, currentEuler.y, initialRotation.eulerAngles.z);
@@ -49,13 +57,32 @@ public class SinglePlayerMovement : NetworkBehaviour
         rb.AddForce(force, ForceMode.Force);
 
         // Limit max speed
-        if (rb.velocity.magnitude > maxSpeed)
-            rb.velocity = rb.velocity.normalized * maxSpeed;
+        if (rb.velocity.magnitude > tempMaxSpeed)
+            rb.velocity = rb.velocity.normalized * tempMaxSpeed;
     }
 
     private void Turn()
     {
         float torque = turnInputValue * turnSpeed;
         rb.AddTorque(Vector3.up * torque, ForceMode.Acceleration);
+    }
+
+    private void Boost()
+    {
+        if (boost)
+        {
+            if(boostCooldown == 0.5)
+            {
+                tempMaxSpeed = boostSpeed;
+                rb.AddForce(transform.forward * boostSpeed, ForceMode.Impulse);
+            }
+            else if(boostCooldown <= 0)
+            {
+                boostCooldown = 2;
+                tempMaxSpeed = maxSpeed;
+                boost = false;
+            }
+        }
+        boostCooldown -= Time.deltaTime;
     }
 }

@@ -16,6 +16,7 @@ public class CubeBehaviour : MonoBehaviour
     public float detectionRange = 15f;
     public float waitTime = 1f;
     public Transform player;
+    public Transform player2;
 
     public Transform pointA;
     public Transform pointB;

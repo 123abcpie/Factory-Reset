@@ -12,6 +12,12 @@ public class PlayerMovement : NetworkBehaviour
     public float boostSpeed = 25f;
     private bool boost = false;
 
+    public float attackRate = 2f;
+    public float projectileSpeed = 10f;
+    public float shootCooldown = 2f;
+    public GameObject projectilePrefab;
+    private Rigidbody projectileRb;
+
     private Rigidbody rb;
     private float movementInputValue;
     private float turnInputValue;
@@ -85,5 +91,23 @@ public class PlayerMovement : NetworkBehaviour
             }
         }
         boostCooldown -= Time.deltaTime;
+    }
+
+     private void Shoot()
+    {
+        if (Input.GetKey(KeyCode.Space) )
+            {
+                 //instantiate a projectile object and send it the player's way
+                GameObject projectile = UnityEngine.Object.Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+                
+                //push forward the projectile
+                Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
+                if (projectileRb != null)
+                {
+                    projectile.transform.rotation = transform.rotation;
+                    projectileRb.AddForce(projectile.transform.forward * projectileSpeed, ForceMode.Impulse);
+                }
+                shootCooldown = attackRate / 2 - 0.05f;
+            }
     }
 }

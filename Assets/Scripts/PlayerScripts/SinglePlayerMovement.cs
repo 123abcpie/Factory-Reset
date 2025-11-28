@@ -11,6 +11,13 @@ public class SinglePlayerMovement : NetworkBehaviour
     private float boostCooldown = 1f;
     public float boostSpeed = 25f;
     private bool boost = false;
+
+    public float attackRate = 2f;
+    public float projectileSpeed = 10f;
+    public float shootCooldown = 2f;
+    public GameObject projectilePrefab;
+    private Rigidbody projectileRb;
+
     private Rigidbody rb;
     private float movementInputValue;
     private float turnInputValue;
@@ -46,6 +53,7 @@ public class SinglePlayerMovement : NetworkBehaviour
         Turn();
         Move();
         Boost();
+        Shoot();
         
         Vector3 currentEuler = transform.rotation.eulerAngles;
         transform.rotation = Quaternion.Euler(initialRotation.eulerAngles.x, currentEuler.y, initialRotation.eulerAngles.z);
@@ -85,4 +93,44 @@ public class SinglePlayerMovement : NetworkBehaviour
         }
         boostCooldown -= Time.deltaTime;
     }
+    /*
+    First attempt at shoot function. Accidently used tranform of the player object and not the player projectile, so when pressing the 
+    Spacebar the player object moves. Does result in a cool quick boost tho. Maybe integrate it in?
+    private void Shoot()
+    {
+        if (Input.GetKey(KeyCode.Space) )
+            {
+                 //instantiate a projectile object and send it the player's way
+                GameObject projectile = UnityEngine.Object.Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+                
+                //push forward the projectile
+                Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
+                if (projectileRb != null)
+                {
+                    projectile.transform.rotation = transform.rotation;
+                    projectileRb.AddForce(transform.forward * projectileSpeed, ForceMode.Impulse);
+                }
+                shootCooldown = attackRate / 2 - 0.05f;
+            }
+    }
+    */
+
+     private void Shoot()
+    {
+        if (Input.GetKey(KeyCode.Space) )
+            {
+                 //instantiate a projectile object and send it the player's way
+                GameObject projectile = UnityEngine.Object.Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+                
+                //push forward the projectile
+                Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
+                if (projectileRb != null)
+                {
+                    projectile.transform.rotation = transform.rotation;
+                    projectileRb.AddForce(projectile.transform.forward * projectileSpeed, ForceMode.Impulse);
+                }
+                shootCooldown = attackRate / 2 - 0.05f;
+            }
+    }
+
 }

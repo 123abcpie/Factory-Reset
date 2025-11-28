@@ -117,3 +117,11 @@ Chase: Enemy seeks the player until it makes contact with the player, destroying
 - Transitions to Patrol if the player is 10 units away during chase
 
 A3 Gameplay Link : https://youtu.be/Ej9loPDawRQ
+
+## Networking Breakdown
+
+- Added main menu UI to allow user to pick between Singleplayer or Multiplayer
+- Two players can join same session of game, where one hosts and the other is the client
+- Added shooting and boost mechanic for both host and client
+
+A4 Gameplay Link : 

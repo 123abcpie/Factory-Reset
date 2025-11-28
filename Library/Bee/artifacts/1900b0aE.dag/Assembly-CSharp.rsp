@@ -404,6 +404,7 @@
 "Assets/Scripts/NetworkScripts/ClientNetworkTransform.cs"
 "Assets/Scripts/NetworkScripts/NetworkGUI.cs"
 "Assets/Scripts/PlayerScripts/CameraController.cs"
+"Assets/Scripts/PlayerScripts/MultiplayerCamera.cs"
 "Assets/Scripts/PlayerScripts/PlayerControllerV2.cs"
 "Assets/Scripts/PlayerScripts/PlayerMovement.cs"
 "Assets/Scripts/PlayerScripts/PlayerObject.cs"

@@ -100,6 +100,7 @@ public class PlayerMovement : NetworkBehaviour
             {
                  //instantiate a projectile object and send it the player's way
                 GameObject projectile = UnityEngine.Object.Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+                projectile.GetComponent<NetworkObject>().Spawn();
                 
                 //push forward the projectile
                 Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();

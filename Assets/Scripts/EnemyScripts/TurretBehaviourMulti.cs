@@ -222,7 +222,9 @@ public class TurretBehaviourMulti : NetworkBehaviour
             Vector3 newRotation = new Vector3(currentRotation.x, currentRotation.y + 15 * i, currentRotation.z);
             //instantiate a projectile object and send it the player's way
             GameObject projectile = UnityEngine.Object.Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+            projectile.GetComponent<NetworkObject>().Spawn();
             GameObject burst = UnityEngine.Object.Instantiate(burstPrefab, transform.position, Quaternion.identity);
+            burst.GetComponent<NetworkObject>().Spawn();
             ProjectileScript projectileScript = projectile.GetComponent<ProjectileScript>();
             if (projectileScript != null)
             {

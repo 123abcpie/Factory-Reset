@@ -1,6 +1,8 @@
 using Unity.Netcode;
+using Unity.Netcode.Components;
 using UnityEngine;
-public class TurretBehaviourMulti : MonoBehaviour
+[RequireComponent(typeof(NetworkTransform))]
+public class TurretBehaviourMulti : NetworkBehaviour
 {
     // Basic Enum
     public enum EnemyState
@@ -52,6 +54,7 @@ public class TurretBehaviourMulti : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!IsServer) return;
         if (!player1 || !player2) return;
         float curDistance = Vector3.Distance(transform.position, closestPlayer.position);
         switch (currentState)
@@ -132,7 +135,9 @@ public class TurretBehaviourMulti : MonoBehaviour
 
                 //instantiate a projectile object and send it the player's way
                 GameObject projectile = UnityEngine.Object.Instantiate(projectilePrefab, transform.position, transform.rotation);
+                projectile.GetComponent<NetworkObject>().Spawn();
                 GameObject burst = UnityEngine.Object.Instantiate(burstPrefab, transform.position, transform.rotation);
+                burst.GetComponent<NetworkObject>().Spawn();
                 //push forward the projectile
                 Rigidbody rb = projectile.GetComponent<Rigidbody>();
                 if (rb != null)
@@ -198,7 +203,8 @@ public class TurretBehaviourMulti : MonoBehaviour
         {
             directionToPlayer = player1Distance;
             closestPlayer = player1;
-        } else
+        }
+        else
         {
             directionToPlayer = player2Distance;
             closestPlayer = player2;

@@ -2576,6 +2576,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Multiplayer Turret
       objectReference: {fileID: 0}
+    - target: {fileID: 1349544851767380153, guid: a0f4cede7ab51cf43b5d65a1ec59fc82, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 2223515169
+      objectReference: {fileID: 0}
+    - target: {fileID: 1349544851767380153, guid: a0f4cede7ab51cf43b5d65a1ec59fc82, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 3966848275
+      objectReference: {fileID: 0}
+    - target: {fileID: 3363570443042083006, guid: a0f4cede7ab51cf43b5d65a1ec59fc82, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 4257704803
+      objectReference: {fileID: 0}
+    - target: {fileID: 5062346055012533411, guid: a0f4cede7ab51cf43b5d65a1ec59fc82, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3318426811
+      objectReference: {fileID: 0}
+    - target: {fileID: 5062346055012533411, guid: a0f4cede7ab51cf43b5d65a1ec59fc82, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 4221490652
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3734,6 +3754,7 @@ MonoBehaviour:
     Prefabs:
       NetworkPrefabsLists:
       - {fileID: 11400000, guid: 67669b00e6ed8eb46a112693349fb114, type: 2}
+      - {fileID: 11400000, guid: 4e37cbf67ce010f4da59135c48327968, type: 2}
     TickRate: 30
     ClientConnectionBufferTimeout: 10
     ConnectionApproval: 0

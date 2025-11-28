@@ -223,6 +223,10 @@ MonoBehaviour:
   maxSpeed: 23
   turnSpeed: 20
   boostSpeed: 25
+  attackRate: 2
+  projectileSpeed: 10
+  shootCooldown: 2
+  projectilePrefab: {fileID: 7460160663478210842, guid: afc0afa086ef3ab4d8a4e2d497270d35, type: 3}
   gameOn: 1
 --- !u!135 &7683925322055561486
 SphereCollider:

@@ -56,6 +56,7 @@ public class PlayerMovement : NetworkBehaviour
         Move();
         Turn();
         Boost();
+        Shoot();
     }
 
     private void Move()
@@ -95,7 +96,7 @@ public class PlayerMovement : NetworkBehaviour
 
      private void Shoot()
     {
-        if (Input.GetKey(KeyCode.Space) )
+        if (Input.GetKey(KeyCode.Q) )
             {
                  //instantiate a projectile object and send it the player's way
                 GameObject projectile = UnityEngine.Object.Instantiate(projectilePrefab, transform.position, Quaternion.identity);

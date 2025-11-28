@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Netcode;
 using UnityEngine;
 
-public class PlayerObject : MonoBehaviour
+public class PlayerObject :NetworkBehaviour
 {
     public int health = 3;
     private Rigidbody rb;
@@ -32,17 +33,18 @@ public class PlayerObject : MonoBehaviour
         {
             float speed = 10f;
             rb.AddForce(collider.gameObject.transform.forward * speed, ForceMode.Impulse);
-            if(collider.gameObject.tag == "Bullet"){
+            if (cooldown <= 0)
+            {
+                health -= 1;
+                cooldown = iFrames;
+            }
+            if (collider.gameObject.tag == "Bullet"){
                 Destroy(collider.gameObject);
             }
             else if(collider.gameObject.tag == "CollidableEnemy"){
                 rb.AddForce(collider.gameObject.transform.forward * speed, ForceMode.Impulse);
             }
-            if(cooldown <= 0)
-            {
-                health -= 1;
-                cooldown = iFrames;
-            }
+            
         }
     }
 }

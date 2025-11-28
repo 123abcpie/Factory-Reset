@@ -1133,12 +1133,12 @@ GameObject:
   - component: {fileID: 412097038}
   - component: {fileID: 412097037}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Restart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &412097037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1183,7 +1183,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1619474775}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: DisplayHealth, Assembly-CSharp
         m_MethodName: RestartScene
         m_Mode: 1
@@ -2219,7 +2219,6 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
-  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2301,19 +2300,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 85, y: 0, z: 0}
---- !u!114 &963194229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feeea928abfe81446aae9c38a0e47a44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
 --- !u!1 &964272162
 GameObject:
   m_ObjectHideFlags: 0
@@ -4208,7 +4194,6 @@ GameObject:
   - component: {fileID: 1619474772}
   - component: {fileID: 1619474771}
   - component: {fileID: 1619474775}
-  - component: {fileID: 1619474776}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4305,21 +4290,6 @@ RectTransform:
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1619474775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1619474770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d3bb8f663d6fcd43a1abfe14c58f899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dispHealth: {fileID: 1688613189}
-  dispGameOver: {fileID: 61931091}
-  restartButton: {fileID: 412097036}
---- !u!114 &1619474776
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
